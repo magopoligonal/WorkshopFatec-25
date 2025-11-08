@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //o < >  <--- serve para pegar um tipo generico e leve tipo como estrutura de dados
+
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -29,6 +31,15 @@ public class PlayerController : MonoBehaviour
         movement();
     }
 
+         /// <summary>
+         /// LateUpdate is called every frame, if the Behaviour is enabled.
+         /// It is called after all Update functions have been called.
+         /// </summary>
+    void LateUpdate()
+    {
+        //função onde vamos colocar o VISUAL
+    }
+    
     private void movement()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -57,6 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.AddForceY(jumpForce);
             IsGrounded = false;
+            animator.SetTrigger("IsJumping");
         }
     }
     
